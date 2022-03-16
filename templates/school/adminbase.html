@@ -165,7 +165,7 @@
       <i class="fas fa-bars" id="sidebar_btn"></i>
     </label>
     <div class="left_area">
-      <h3>SMS - Admin Panel</h3>
+      <h3>SisEsDist</h3>
     </div>
     <div class="right_area">
       <a href="/logout" class="logout_btn">Logout</a>
@@ -177,23 +177,20 @@
     <center>
 
       <img src="{% static "images/admin-icn.png" %}" class="profile_image" alt="">
-      <h4>Admin {{request.user.first_name}}</h4>
+      <h4>Usuário: {{request.user.first_name}}</h4>
 
     </center>
 
     <a href="/admin-dashboard"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-    <a href="/admin-teacher"><i class="fas fa-chalkboard-teacher"></i><span>Teacher</span></a>
-    <a href="/admin-student"><i class="fas fa-user-graduate"></i><span>Student</span></a>
-    <a href="/admin-attendance"><i class="fas fa-address-card"></i><span>Attendance</span></a>
-    <a href="/admin-fee"><i class="fas fa-dollar"></i><span>Fee</span></a>
-    <a href="/admin-notice"><i class="fas fa-bullhorn"></i><span>Notice</span></a>
+    <a href="/admin-teacher"><i class="fas fa-chalkboard-teacher"></i><span>Professor</span></a>
+    <a href="/admin-student"><i class="fas fa-user-graduate"></i><span>Estudante</span></a>
+    <a href="/admin-attendance"><i class="fas fa-address-card"></i><span>Presença</span></a>
+    <a href="/admin-fee"><i class="fas fa-dollar"></i><span>Mensalidades</span></a>
+    <a href="/admin-notice"><i class="fas fa-bullhorn"></i><span>Avisos</span></a>
 
 
   </div>
-  <!--sidebar end-->
-
-
-  <!--content start-->
+  
   <div class="content">
     <br><br><br><br><br>
     {% block content %}
@@ -204,10 +201,7 @@
     <br><br><br>
     {% include "school/footer.html" %}
   </div>
-  <!--content end-->
-  <!--
-      written By : sumit kumar
-      -->
+  
 </body>
 
 </html>

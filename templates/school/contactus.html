@@ -5,7 +5,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>SMS - Django</title>
+  <title>Contato - Sistema Escolar</title>
 
 
 </head>
@@ -16,17 +16,16 @@
   <br><br>
 
   <center>
-    <h3 class='alert alert-success'>Send Us Your Valuable Feedback !</h3>
+    <h4 class='alert alert-success'>Escreva seu feedback do nosso sistema</h4>
 
     <form method="POST">
-      <!-- Very Important csrf Token -->
       {% csrf_token %}
       <div class="form-group">
         <p>
-        <h3>{{ form.as_p }}</h3>
+        <h4>{{ form.as_p }}</h4>
         </p>
         <br>
-        <input type="submit" value="Send Message" class='btn btn-primary btn-lg'>
+        <input type="submit" value="Enviar feedback" class='btn btn-primary btn-lg'>
       </div>
     </form>
   </center>
