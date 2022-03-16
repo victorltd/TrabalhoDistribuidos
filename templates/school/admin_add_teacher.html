@@ -49,41 +49,40 @@
 
 </head>
 
-<!------ signup page for teacher by admin(sumit)  ---------->
 <form method="post">
   {% csrf_token %}
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>Hire New Teacher To School</p>
+        <p>Contratar novo professor</p>
       </div>
 
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.first_name class="form-control" placeholder="First Name" %}
+              {% render_field form1.first_name class="form-control" placeholder="Nome" %}
             </div>
             <div class="form-group">
               {% render_field form1.username class="form-control" placeholder="Username" %}
             </div>
             <div class="form-group">
-              {% render_field form2.mobile class="form-control" placeholder="Contact" %}
+              {% render_field form2.mobile class="form-control" placeholder="Telefone" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
+              {% render_field form1.last_name class="form-control" placeholder="Sobrenome" %}
             </div>
             <div class="form-group">
-              {% render_field form1.password class="form-control" type="password" placeholder="Password" %}
+              {% render_field form1.password class="form-control" type="password" placeholder="Senha" %}
             </div>
             <div class="form-group">
-              {% render_field form2.salary class="form-control" placeholder="Salary" %}
+              {% render_field form2.salary class="form-control" placeholder="Salário" %}
             </div>
           </div>
         </div>
-        <button type="submit" class="btnSubmit">Hire</button>
+        <button type="submit" class="btnSubmit">Contratar</button>
       </div>
     </div>
   </div>

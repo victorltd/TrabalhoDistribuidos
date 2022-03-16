@@ -45,11 +45,7 @@
 
 </head>
 
-<!--
-written By : sumit kumar
--->
 
-<!------ signup page for student by admin(sumit)  ---------->
 <form method="post">
   {% csrf_token %}
   <div class="container register-form">
@@ -62,27 +58,27 @@ written By : sumit kumar
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.first_name class="form-control" placeholder="First Name" %}
+              {% render_field form1.first_name class="form-control" placeholder="Nome" %}
             </div>
             <div class="form-group">
               {% render_field form1.username class="form-control" placeholder="Username" %}
             </div>
             <div class="form-group">
-              {% render_field form2.mobile class="form-control" placeholder="Contact" %}
+              {% render_field form2.mobile class="form-control" placeholder="Telefone" %}
             </div>
             <div class="form-group">
-              {% render_field form2.cl class="form-control" placeholder="Class" %}
+              {% render_field form2.cl class="form-control" placeholder="Turma" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
+              {% render_field form1.last_name class="form-control" placeholder="Sobrenome" %}
             </div>
             <div class="form-group">
-              {% render_field form1.password class="form-control" type="password" placeholder="Password" %}
+              {% render_field form1.password class="form-control" type="password" placeholder="Senha" %}
             </div>
             <div class="form-group">
-              {% render_field form2.fee class="form-control" placeholder="Fee" %}
+              {% render_field form2.fee class="form-control" placeholder="Mensalidade " %}
             </div>
             <div class="form-group">
               {% render_field form2.roll class="form-control" placeholder="Roll" %}

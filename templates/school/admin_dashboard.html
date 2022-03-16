@@ -46,12 +46,14 @@
 
 <br><br>
 <div class="w3-panel w3-black">
-  <p>Notice Board</p>
+  <p>Painel de avisos</p>
 </div><br>
 {%for n in notice%}
 <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
+  <b>Mensagem de : {{n.by}} </b>
+  <br>{{n.message}}<br>
+  <strong>Postado em {{n.date}} </strong><br><br>
 </div>
 {%endfor%}
 
