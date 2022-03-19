@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SMS - Django</title>
+  <title>SisEDist</title>
 
 
   <style type="text/css">
@@ -62,13 +62,12 @@
   <br>
   <br><br>
 
-  <!--- signup page for teacher by admin(sumit)  ---------->
   <form method="post">
     {% csrf_token %}
     <div class="container register-form">
       <div class="form">
         <div class="note">
-          <p>Student Login Page</p>
+          <p>Login - Estudante</p>
         </div>
 
         <div class="form-content">
@@ -76,20 +75,20 @@
             <div class="col-md-6">
 
               <div class="form-group">
-                {% render_field form.username class="form-control" placeholder="Username" %}
+                {% render_field form.username class="form-control" placeholder="Nome de usuário" %}
               </div>
 
             </div>
             <div class="col-md-6">
 
               <div class="form-group">
-                {% render_field form.password class="form-control" placeholder="Password" %}
+                {% render_field form.password class="form-control" placeholder="Senha" %}
               </div>
 
             </div>
           </div>
           <button type="submit" class="btnSubmit">Login</button>
-          <div class="text-center">Don't have an account? <a href="studentsignup">SignUp here</a></div>
+          <div class="text-center">Não tem cadastro? <a href="studentsignup">Criar conta</a></div>
         </div>
       </div>
     </div>
