@@ -40,7 +40,7 @@ written By : sumit kumar
 
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h6 class="panel-title">Attendance</h6>
+          <h6 class="panel-title">Chamada</h6>
 
         </div>
 
@@ -48,8 +48,8 @@ written By : sumit kumar
           <thead>
 
             <tr>
-              <th>Student Name</th>
-              <th>Present/Absent</th>
+              <th>Nome do estudante</th>
+              <th>Status</th>
             </tr>
           </thead>
 
@@ -65,10 +65,10 @@ written By : sumit kumar
 
 
         </table>
-        {% render_field aform.date class="form-control" placeholder="Enter Date mm/dd/yyyy" %}
+        {% render_field aform.date class="form-control" placeholder="Insira a data mm/dd/yyyy" %}
         <input type="submit" style="margin-left: 50px;
                                         margin-top: 20px;
-                                        margin-bottom: 20px;" name="submit" class="btn btn-success" value="Submit Attendance">
+                                        margin-bottom: 20px;" name="submit" class="btn btn-success" value="Salvar">
       </div>
     </div>
   </div>
