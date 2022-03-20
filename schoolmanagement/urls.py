@@ -12,9 +12,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
 
-    path('adminclick', views.adminclick_view),
-    path('teacherclick', views.teacherclick_view),
-    path('studentclick', views.studentclick_view),
+    path('admin_inicio', views.admin_pre_view),
+    path('prof_inicio', views.prof_pre_view),
+    path('aluno_inicio', views.estudante_pre_view),
 
 
     path('adminsignup', views.admin_signup_view),
@@ -78,6 +78,6 @@ urlpatterns = [
 
 
 
-    path('aboutus', views.aboutus_view),
+    path('sobre', views.sobre_view),
     path('contactus', views.contactus_view),
 ]

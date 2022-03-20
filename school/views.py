@@ -14,25 +14,25 @@ def home_view(request):
 
 
 
-#for showing signup/login button for teacher
-def adminclick_view(request):
+#inicio para o admin
+def admin_pre_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'school/adminclick.html')
+    return render(request,'school/admin_inicio.html')
 
 
-#for showing signup/login button for teacher
-def teacherclick_view(request):
+#pre tela para o professor
+def prof_pre_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'school/teacherclick.html')
+    return render(request,'school/prof_inicio.html')
 
 
-#for showing signup/login button for student
-def studentclick_view(request):
+#pre tela de login aluno
+def estudante_pre_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'school/studentclick.html')
+    return render(request,'school/aluno_inicio.html')
 
 
 
@@ -626,9 +626,9 @@ def student_attendance_view(request):
 
 
 
-# for aboutus and contact ussssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-def aboutus_view(request):
-    return render(request,'school/aboutus.html')
+# tela de sobre
+def sobre_view(request):
+    return render(request,'school/sobre.html')
 
 def contactus_view(request):
     sub = forms.ContactusForm()
