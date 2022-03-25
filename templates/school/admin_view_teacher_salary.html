@@ -44,7 +44,7 @@
         <thead>
 
           <tr>
-            <th>Nome</th>
+            <th>first_name</th>
 
             <th>R$</th>
 
@@ -53,7 +53,7 @@
         {% for t in teachers %}
         <tr>
           <td> {{t.get_name}}</td>
-          <td>${{t.salary}}</td>
+          <td>${{t.salario}}</td>
         </tr>
 
         {% endfor %}

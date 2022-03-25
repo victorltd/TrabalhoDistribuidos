@@ -44,8 +44,8 @@ written By : sumit kumar
             <thead>
 
                 <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
+                    <th>first_name</th>
+                    <th>mobile</th>
                     <th>Salário</th>
                     <th>Data da contratação</th>
                     <th>Ações</th>
@@ -56,8 +56,8 @@ written By : sumit kumar
               <tr>
                   <td> {{t.get_name}}</td>
                   <td>{{t.mobile}}</td>
-                  <td>${{t.salary}}</td>
-                  <td>{{t.joindate}}</td>
+                  <td>${{t.salario}}</td>
+                  <td>{{t.dt_contrato}}</td>
                   <td><a class="btn btn-primary btn-xs" href="{% url 'update-teacher' t.id  %}"  ><span class="glyphicon glyphicon-edit"></span></a>
                   <a class="btn btn-danger btn-xs" href="{% url 'delete-teacher-from-school' t.id  %}"  ><span class="glyphicon glyphicon-trash"></span></a></td>
 

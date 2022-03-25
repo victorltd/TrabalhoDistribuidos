@@ -144,8 +144,8 @@ def admin_dashboard_view(request):
     studentcount=models.StudentExtra.objects.all().filter(status=True).count()
     pendingstudentcount=models.StudentExtra.objects.all().filter(status=False).count()
 
-    teachersalary=models.TeacherExtra.objects.filter(status=True).aggregate(Sum('salary'))
-    pendingteachersalary=models.TeacherExtra.objects.filter(status=False).aggregate(Sum('salary'))
+    teachersalario=models.TeacherExtra.objects.filter(status=True).aggregate(Sum('salario'))
+    pendingteachersalario=models.TeacherExtra.objects.filter(status=False).aggregate(Sum('salario'))
 
     studentfee=models.StudentExtra.objects.filter(status=True).aggregate(Sum('fee',default=0))
     pendingstudentfee=models.StudentExtra.objects.filter(status=False).aggregate(Sum('fee'))
@@ -160,8 +160,8 @@ def admin_dashboard_view(request):
         'studentcount':studentcount,
         'pendingstudentcount':pendingstudentcount,
 
-        'teachersalary':teachersalary['salary__sum'],
-        'pendingteachersalary':pendingteachersalary['salary__sum'],
+        'teachersalario':teachersalario['salario__sum'],
+        'pendingteachersalario':pendingteachersalario['salario__sum'],
 
         'studentfee':studentfee['fee__sum'],
         'pendingstudentfee':pendingstudentfee['fee__sum'],
@@ -508,9 +508,9 @@ def teacher_dashboard_view(request):
     teacherdata=models.TeacherExtra.objects.all().filter(status=True,user_id=request.user.id)
     notice=models.Notice.objects.all()
     mydict={
-        'salary':teacherdata[0].salary,
+        'salario':teacherdata[0].salario,
         'mobile':teacherdata[0].mobile,
-        'date':teacherdata[0].joindate,
+        'date':teacherdata[0].dt_contrato,
         'notice':notice
     }
     return render(request,'school/teacher_dashboard.html',context=mydict)

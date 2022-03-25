@@ -2,6 +2,10 @@ from django import forms
 from django.contrib.auth.models import User
 from . import models
 
+from django.forms import ModelForm
+
+#from .models import Promise
+
 #for admin
 class AdminSigupForm(forms.ModelForm):
     class Meta:
@@ -29,19 +33,32 @@ class TeacherUserForm(forms.ModelForm):
 class TeacherExtraForm(forms.ModelForm):
     class Meta:
         model=models.TeacherExtra
-        fields=['salary','mobile','status']
+        fields=['salario','mobile','status']
 
 
 
 
 #for Attendance related form
-presence_choices=(('Present','Present'),('Absent','Absent'))
+presence_choices=(('Present','Present'),('Falta','Falta'))
 class AttendanceForm(forms.Form):
     present_status=forms.ChoiceField( choices=presence_choices)
     date=forms.DateField()
 
+'''
 class AskDateForm(forms.Form):
     date=forms.DateField()
+'''
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class AskDateForm(forms.Form):
+    date=forms.DateField(widget=DateInput)
+
+
+
+
+    #def get_data_input_evento(self):
+        #return self.date.strftime('%Y-%m-%dT%H:%M')
 
 
 

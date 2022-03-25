@@ -50,7 +50,7 @@
           <thead>
 
             <tr>
-              <th>Nome</th>
+              <th>first_name</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -67,11 +67,14 @@
 
 
         </table>
-        {% render_field aform.date class="form-control" placeholder="Enter Date mm/dd/yyyy" %}
-        <input type="submit" style="margin-left: 50px;
+        <!--input type="date"-->
 
-    margin-top: 20px;
-    margin-bottom: 20px;   " name="submit" class="btn btn-success" value="Salvar">
+        {% render_field aform.date class="form-control" placeholder="Insira a data dd/mm/yyyy" %}
+
+       
+
+        <input type="submit" style="margin-left: 50px; margin-top: 20px; margin-bottom: 20px; "
+        name="submit" class="btn btn-success" value="Salvar">
       </div>
 
 

@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 
 class TeacherExtra(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    salary = models.PositiveIntegerField(null=False)
-    joindate=models.DateField(auto_now_add=True)
+    salario = models.PositiveIntegerField(null=False)
+    dt_contrato=models.DateField(auto_now_add=True)
     mobile = models.CharField(max_length=40)
     status=models.BooleanField(default=False)
     def __str__(self):
