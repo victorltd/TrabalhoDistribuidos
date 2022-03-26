@@ -98,7 +98,7 @@ def teacher_signup_view(request):
             my_teacher_group[0].user_set.add(user)
 
         return HttpResponseRedirect('teacherlogin')
-    return render(request,'school/teachersignup.html',context=mydict)
+    return render(request,'school/professorcadastro.html',context=mydict)
 
 
 
