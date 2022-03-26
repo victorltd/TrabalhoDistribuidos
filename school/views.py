@@ -144,8 +144,8 @@ def admin_dashboard_view(request):
     studentcount=models.StudentExtra.objects.all().filter(status=True).count()
     pendingstudentcount=models.StudentExtra.objects.all().filter(status=False).count()
 
-    teachersalary=models.TeacherExtra.objects.filter(status=True).aggregate(Sum('salary'))
-    pendingteachersalary=models.TeacherExtra.objects.filter(status=False).aggregate(Sum('salary'))
+    teachersalario=models.TeacherExtra.objects.filter(status=True).aggregate(Sum('salario'))
+    pendingteachersalario=models.TeacherExtra.objects.filter(status=False).aggregate(Sum('salario'))
 
     studentfee=models.StudentExtra.objects.filter(status=True).aggregate(Sum('fee',default=0))
     pendingstudentfee=models.StudentExtra.objects.filter(status=False).aggregate(Sum('fee'))
@@ -160,8 +160,8 @@ def admin_dashboard_view(request):
         'studentcount':studentcount,
         'pendingstudentcount':pendingstudentcount,
 
-        'teachersalary':teachersalary['salary__sum'],
-        'pendingteachersalary':pendingteachersalary['salary__sum'],
+        'teachersalario':teachersalario['salario__sum'],
+        'pendingteachersalario':pendingteachersalario['salario__sum'],
 
         'studentfee':studentfee['fee__sum'],
         'pendingstudentfee':pendingstudentfee['fee__sum'],
@@ -416,19 +416,19 @@ def admin_attendance_view(request):
 def admin_take_attendance_view(request,cl):
     students=models.StudentExtra.objects.all().filter(cl=cl)
     print(students)
-    aform=forms.AttendanceForm()
+    aform=forms.ChamadaForm()
     if request.method=='POST':
-        form=forms.AttendanceForm(request.POST)
+        form=forms.ChamadaForm(request.POST)
         if form.is_valid():
-            Attendances=request.POST.getlist('present_status')
+            #colocar no plural, pq essa aqui vai ser iterada
+            Chamadas=request.POST.getlist('present_status')
             date=form.cleaned_data['date']
-            for i in range(len(Attendances)):
-                AttendanceModel=models.Attendance()
-                AttendanceModel.cl=cl
-                AttendanceModel.date=date
-                AttendanceModel.present_status=Attendances[i]
-                AttendanceModel.roll=students[i].roll
-                AttendanceModel.save()
+            for i in range(len(Chamadas)):
+                ChamadaModel=models.Chamada()
+                ChamadaModel.cl=cl
+                ChamadaModel.date=date
+                ChamadaModel.present_status=Chamadas[i]
+                ChamadaModel.save()
             return redirect('admin-attendance')
         else:
             print('form invalid')
@@ -444,9 +444,9 @@ def admin_view_attendance_view(request,cl):
         form=forms.AskDateForm(request.POST)
         if form.is_valid():
             date=form.cleaned_data['date']
-            attendancedata=models.Attendance.objects.all().filter(date=date,cl=cl)
+            Chamadadata=models.Chamada.objects.all().filter(date=date,cl=cl)
             studentdata=models.StudentExtra.objects.all().filter(cl=cl)
-            mylist=zip(attendancedata,studentdata)
+            mylist=zip(Chamadadata,studentdata)
             return render(request,'school/admin_view_attendance_page.html',{'cl':cl,'mylist':mylist,'date':date})
         else:
             print('form invalid')
@@ -460,18 +460,17 @@ def admin_view_attendance_view(request,cl):
 
 
 
-#fee related view by adminnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_fee_view(request):
-    return render(request,'school/admin_fee.html')
+def admin_mensalidade_view(request):
+    return render(request,'school/admin_mensalidade.html')
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_view_fee_view(request,cl):
+def admin_view_mensalidade_detalhes(request,cl):
     feedetails=models.StudentExtra.objects.all().filter(cl=cl)
-    return render(request,'school/admin_view_fee.html',{'feedetails':feedetails,'cl':cl})
+    return render(request,'school/admin_view_mensalidade.html',{'feedetails':feedetails,'cl':cl})
 
 
 
@@ -508,9 +507,9 @@ def teacher_dashboard_view(request):
     teacherdata=models.TeacherExtra.objects.all().filter(status=True,user_id=request.user.id)
     notice=models.Notice.objects.all()
     mydict={
-        'salary':teacherdata[0].salary,
+        'salario':teacherdata[0].salario,
         'mobile':teacherdata[0].mobile,
-        'date':teacherdata[0].joindate,
+        'date':teacherdata[0].dt_contrato,
         'notice':notice
     }
     return render(request,'school/teacher_dashboard.html',context=mydict)
@@ -527,19 +526,19 @@ def teacher_attendance_view(request):
 @user_passes_test(is_teacher)
 def teacher_take_attendance_view(request,cl):
     students=models.StudentExtra.objects.all().filter(cl=cl)
-    aform=forms.AttendanceForm()
+    aform=forms.ChamadaForm()
     if request.method=='POST':
-        form=forms.AttendanceForm(request.POST)
+        form=forms.ChamadaForm(request.POST)
         if form.is_valid():
-            Attendances=request.POST.getlist('present_status')
+            Chamadas=request.POST.getlist('present_status')
             date=form.cleaned_data['date']
-            for i in range(len(Attendances)):
-                AttendanceModel=models.Attendance()
-                AttendanceModel.cl=cl
-                AttendanceModel.date=date
-                AttendanceModel.present_status=Attendances[i]
-                AttendanceModel.roll=students[i].roll
-                AttendanceModel.save()
+            for i in range(len(Chamadas)):
+                ChamadaModel=models.Chamada()
+                ChamadaModel.cl=cl
+                ChamadaModel.date=date
+                ChamadaModel.present_status=Chamadas[i]
+                ChamadaModel.roll=students[i].roll
+                ChamadaModel.save()
             return redirect('teacher-attendance')
         else:
             print('form invalid')
@@ -555,9 +554,9 @@ def teacher_view_attendance_view(request,cl):
         form=forms.AskDateForm(request.POST)
         if form.is_valid():
             date=form.cleaned_data['date']
-            attendancedata=models.Attendance.objects.all().filter(date=date,cl=cl)
+            Chamadadata=models.Chamada.objects.all().filter(date=date,cl=cl)
             studentdata=models.StudentExtra.objects.all().filter(cl=cl)
-            mylist=zip(attendancedata,studentdata)
+            mylist=zip(Chamadadata,studentdata)
             return render(request,'school/teacher_view_attendance_page.html',{'cl':cl,'mylist':mylist,'date':date})
         else:
             print('form invalid')
@@ -611,8 +610,8 @@ def student_attendance_view(request):
         if form.is_valid():
             date=form.cleaned_data['date']
             studentdata=models.StudentExtra.objects.all().filter(user_id=request.user.id,status=True)
-            attendancedata=models.Attendance.objects.all().filter(date=date,cl=studentdata[0].cl,roll=studentdata[0].roll)
-            mylist=zip(attendancedata,studentdata)
+            Chamadadata=models.Chamada.objects.all().filter(date=date,cl=studentdata[0].cl)
+            mylist=zip(Chamadadata,studentdata)
             return render(request,'school/student_view_attendance_page.html',{'mylist':mylist,'date':date})
         else:
             print('form invalid')

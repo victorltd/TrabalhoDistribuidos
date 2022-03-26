@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date', models.DateField()),
                 ('cl', models.CharField(max_length=10)),
-                ('present_status', models.CharField(choices=[('Present', 'Present'), ('Absent', 'Absent')], max_length=10)),
+                ('present_status', models.CharField(choices=[('Present', 'Present'), ('Falta', 'Falta')], max_length=10)),
                 ('student_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.StudentExtra')),
             ],
         ),

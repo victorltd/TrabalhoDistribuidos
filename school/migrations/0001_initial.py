@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('salary', models.CharField(max_length=40)),
-                ('joindate', models.DateField(auto_now_add=True)),
+                ('dt_contrato', models.DateField(auto_now_add=True)),
                 ('mobile', models.CharField(max_length=40)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
