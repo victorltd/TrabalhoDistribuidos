@@ -3,7 +3,7 @@ by sumit kumar
 written by fb.com/sumit.luv
 
 """
-#teste versao Victor
+#teste versao
 
 from django.contrib import admin
 from django.urls import path
@@ -21,7 +21,7 @@ urlpatterns = [
 
     path('adminsignup', views.admin_signup_view),
     path('studentsignup', views.student_signup_view,name='studentsignup'),
-    path('teachersignup', views.teacher_signup_view),
+    path('professorcadastro', views.teacher_signup_view),
     path('adminlogin', LoginView.as_view(template_name='school/adminlogin.html')),
     path('studentlogin', LoginView.as_view(template_name='school/studentlogin.html')),
     path('teacherlogin', LoginView.as_view(template_name='school/teacherlogin.html')),
