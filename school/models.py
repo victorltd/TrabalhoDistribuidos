@@ -22,14 +22,14 @@ class TeacherExtra(models.Model):
 
 
 
-classes=[('one','one'),('two','two'),('three','three'),
-('four','four'),('five','five'),('six','six'),('seven','seven'),('eight','eight'),('nine','nine'),('ten','ten')]
+classes=[('1A','1A'),('1B','1B'),('1C','1C'),
+('2A','2A'),('2B','2B'),('2C','2C'),('3A','3A'),('3B','3B'),('3C','3C'),('Cursinho','Cursinho')]
 class StudentExtra(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     roll = models.CharField(max_length=10)
     mobile = models.CharField(max_length=40,null=True)
     fee=models.PositiveIntegerField(null=True)
-    cl= models.CharField(max_length=10,choices=classes,default='one')
+    cl= models.CharField(max_length=10,choices=classes,default='1A')
     status=models.BooleanField(default=False)
     @property
     def get_name(self):
@@ -42,7 +42,7 @@ class StudentExtra(models.Model):
 
 
 
-class Attendance(models.Model):
+class Chamada(models.Model):
     roll=models.CharField(max_length=10,null=True)
     date=models.DateField()
     cl=models.CharField(max_length=10)

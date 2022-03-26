@@ -29,21 +29,19 @@
   <div class="row">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h6 class="panel-title">fees da turma: {{cl}} </h6>
+        <h6 class="panel-title">Mensalidades da turma: {{cl}} </h6>
       </div>
       <table class="table table-hover table-striped table-bordered" id="dev-table">
         <thead>
           <tr>
-            <th>first_name</th>
-            <th>Roll</th>
-            <th>mobile</th>
+            <th>Nome</th>
+            <th>Telefone</th>
             <th>R$</th>
           </tr>
         </thead>
         {%for f in feedetails %}
         <tr>
           <td>{{f.get_name}}</td>
-          <td>{{f.roll}}</td>
           <td>{{f.mobile}}</td>
           <td>{{f.fee}}</td>
         </tr>

@@ -59,8 +59,8 @@ urlpatterns = [
     path('admin-view-attendance/<str:cl>', views.admin_view_attendance_view,name='admin-view-attendance'),
 
 
-    path('admin-fee', views.admin_fee_view,name='admin-fee'),
-    path('admin-view-fee/<str:cl>', views.admin_view_fee_view,name='admin-view-fee'),
+    path('admin-mensalidade', views.admin_mensalidade_view,name='admin-mensalidade'),
+    path('admin-view-mensalidade/<str:cl>', views.admin_view_mensalidade_detalhes,name='admin-view-mensalidade'),
 
     path('admin-notice', views.admin_notice_view,name='admin-notice'),
 

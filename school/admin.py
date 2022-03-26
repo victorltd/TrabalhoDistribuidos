@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Attendance,StudentExtra,TeacherExtra,Notice
+from .models import Chamada,StudentExtra,TeacherExtra,Notice
 # Register your models here. (by sumit.luv)
 class StudentExtraAdmin(admin.ModelAdmin):
     pass
@@ -9,9 +9,9 @@ class TeacherExtraAdmin(admin.ModelAdmin):
     pass
 admin.site.register(TeacherExtra, TeacherExtraAdmin)
 
-class AttendanceAdmin(admin.ModelAdmin):
+class ChamadaAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Attendance, AttendanceAdmin)
+admin.site.register(Chamada, ChamadaAdmin)
 
 class NoticeAdmin(admin.ModelAdmin):
     pass

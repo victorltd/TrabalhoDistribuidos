@@ -34,16 +34,14 @@
       <table class="table table-hover table-striped table-bordered" id="dev-table">
         <thead>
           <tr>
-            <th>first_name</th>
-            <th>Student Roll</th>
+            <th>Nome</th>
             <th>Status</th>
           </tr>
         </thead>
-        {%for attendancedata,studentdata in mylist %}
+        {%for Chamadadata,studentdata in mylist %}
         <tr>
           <td>{{studentdata.get_name}}</td>
-          <td>{{studentdata.roll}}</td>
-          <td>{{attendancedata.present_status}}</td>
+          <td>{{Chamadadata.present_status}}</td>
         </tr>
         {%endfor%}
       </table>

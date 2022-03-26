@@ -21,7 +21,7 @@ class StudentUserForm(forms.ModelForm):
 class StudentExtraForm(forms.ModelForm):
     class Meta:
         model=models.StudentExtra
-        fields=['roll','cl','mobile','fee','status']
+        fields=['cl','mobile','fee','status']
 
 
 
@@ -38,9 +38,9 @@ class TeacherExtraForm(forms.ModelForm):
 
 
 
-#for Attendance related form
+#for Chamada related form
 presence_choices=(('Present','Present'),('Falta','Falta'))
-class AttendanceForm(forms.Form):
+class ChamadaForm(forms.Form):
     present_status=forms.ChoiceField( choices=presence_choices)
     date=forms.DateField()
 
