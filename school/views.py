@@ -300,7 +300,7 @@ def admin_student_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_add_student_view(request):
+def admin_add_estudante_view(request):
     form1=forms.StudentUserForm()
     form2=forms.StudentExtraForm()
     mydict={'form1':form1,'form2':form2}
@@ -323,7 +323,7 @@ def admin_add_student_view(request):
         else:
             print("form is invalid")
         return HttpResponseRedirect('admin-student')
-    return render(request,'school/admin_add_student.html',context=mydict)
+    return render(request,'school/admin_add_estudante.html',context=mydict)
 
 
 @login_required(login_url='adminlogin')
