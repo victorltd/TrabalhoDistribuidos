@@ -1,0 +1,1 @@
+web: guiunicorn schoolmanagement.wsgi:application --log-file - 
