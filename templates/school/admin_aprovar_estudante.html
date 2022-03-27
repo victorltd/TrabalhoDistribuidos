@@ -41,10 +41,10 @@
         <thead>
 
           <tr>
-            <th>first_name</th>
+            <th>Nome</th>
             <th>Turma</th>
-            <th>fee</th>
-            <th>mobile</th>
+            <th>Mensalidade</th>
+            <th>Telefone</th>
             <th>Ações</th>
             
           </tr>
@@ -55,8 +55,8 @@
           <td>{{s.cl}}</td>
           <td>{{s.fee}}</td>
           <td>{{s.mobile}}</td>
-          <td><a class="btn btn-success btn-xs" href="{% url 'approve-student' s.id  %}"><span class="glyphicon glyphicon-ok"></span></a>
-         <a class="btn btn-danger btn-xs" href="{% url 'delete-student' s.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+          <td><a class="btn btn-success btn-xs" href="{% url 'aprovar-estudante' s.id  %}"><span class="glyphicon glyphicon-ok"></span></a>
+         <a class="btn btn-danger btn-xs" href="{% url 'apagar-estudante' s.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
 
         {% endfor %}

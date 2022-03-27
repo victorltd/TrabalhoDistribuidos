@@ -42,8 +42,8 @@
         <thead>
 
           <tr>
-            <th>first_name</th>
-            <th>mobile</th>
+            <th>Nome</th>
+            <th>Telefone</th>
             <th>Salário</th>
             <th>Data da contratação</th>
             <th>Ações</th>
@@ -56,8 +56,8 @@
           <td>{{t.mobile}}</td>
           <td>{{t.salario}}</td>
           <td>{{t.dt_contrato}}</td>
-          <td><a class="btn btn-success btn-xs" href="{% url 'approve-teacher' t.id  %}"><span class="glyphicon glyphicon-ok"></span></a>
-          <a class="btn btn-danger btn-xs" href="{% url 'delete-teacher' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+          <td><a class="btn btn-success btn-xs" href="{% url 'aprovar-professor' t.id  %}"><span class="glyphicon glyphicon-ok"></span></a>
+          <a class="btn btn-danger btn-xs" href="{% url 'apagar-professor' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
 
         {% endfor %}
