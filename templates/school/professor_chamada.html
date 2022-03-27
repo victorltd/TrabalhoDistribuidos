@@ -1,0 +1,111 @@
+{% extends 'school/teacherbase.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+
+</head>
+<div class="container">
+
+  <div class="row">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Chamada</h6>
+
+      </div>
+
+      <table class="table table-hover table-striped table-bordered" id="dev-table">
+        <thead>
+
+          <tr>
+            <th>Turma</th>
+            <th>Fazer chamada</th>
+            <th>Ver chamada</th>
+          </tr>
+        </thead>
+
+        <tr>
+          <td> 1A</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '1A'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '1A'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 1B</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '1B'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '1B'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 1C</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '1C'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '1C'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 2A</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '2A'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '2A'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 2B</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '2B'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '2B'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 2C</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '2C'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '2C'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 3A</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '3A'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '3A'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 3B</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '3B'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '3B'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> 3C</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' '3C'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' '3C'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+        <tr>
+          <td> Cursinho</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'professor-fazer-chamada' 'Cursinho'  %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'professor-ver-chamada' 'Cursinho'  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}
