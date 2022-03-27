@@ -52,7 +52,7 @@ def admin_signup_view(request):
             my_admin_group[0].user_set.add(user)
 
             return HttpResponseRedirect('adminlogin')
-    return render(request,'school/adminsignup.html',{'form':form})
+    return render(request,'school/admincadastro.html',{'form':form})
 
 
 
@@ -75,8 +75,8 @@ def student_signup_view(request):
             my_student_group = Group.objects.get_or_create(name='STUDENT')
             my_student_group[0].user_set.add(user)
 
-        return HttpResponseRedirect('studentlogin')
-    return render(request,'school/studentsignup.html',context=mydict)
+        return HttpResponseRedirect('estudantelogin')
+    return render(request,'school/estudantecadastro.html',context=mydict)
 
 
 def teacher_signup_view(request):
@@ -97,7 +97,7 @@ def teacher_signup_view(request):
             my_teacher_group = Group.objects.get_or_create(name='TEACHER')
             my_teacher_group[0].user_set.add(user)
 
-        return HttpResponseRedirect('teacherlogin')
+        return HttpResponseRedirect('professorlogin')
     return render(request,'school/professorcadastro.html',context=mydict)
 
 
@@ -120,15 +120,15 @@ def afterlogin_view(request):
     elif is_teacher(request.user):
         accountapproval=models.TeacherExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            return redirect('teacher-dashboard')
+            return redirect('professor-dashboard')
         else:
-            return render(request,'school/teacher_wait_for_approval.html')
+            return render(request,'school/professor_aguarde.html')
     elif is_student(request.user):
         accountapproval=models.StudentExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            return redirect('student-dashboard')
+            return redirect('estudante-dashboard')
         else:
-            return render(request,'school/student_wait_for_approval.html')
+            return render(request,'school/aluno_aguarde.html')
 
 
 
@@ -182,12 +182,12 @@ def admin_dashboard_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_teacher_view(request):
-    return render(request,'school/admin_teacher.html')
+def admin_professor_view(request):
+    return render(request,'school/admin_professor.html')
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_add_teacher_view(request):
+def admin_add_professor_view(request):
     form1=forms.TeacherUserForm()
     form2=forms.TeacherExtraForm()
     mydict={'form1':form1,'form2':form2}
@@ -208,21 +208,21 @@ def admin_add_teacher_view(request):
             my_teacher_group[0].user_set.add(user)
 
         return HttpResponseRedirect('admin-teacher')
-    return render(request,'school/admin_add_teacher.html',context=mydict)
+    return render(request,'school/admin_add_professor.html',context=mydict)
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_view_teacher_view(request):
+def admin_view_professor_view(request):
     teachers=models.TeacherExtra.objects.all().filter(status=True)
-    return render(request,'school/admin_view_teacher.html',{'teachers':teachers})
+    return render(request,'school/admin_view_professor.html',{'teachers':teachers})
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_approve_teacher_view(request):
+def admin_aprovar_professor_view(request):
     teachers=models.TeacherExtra.objects.all().filter(status=False)
-    return render(request,'school/admin_approve_teacher.html',{'teachers':teachers})
+    return render(request,'school/admin_aprovar_professor.html',{'teachers':teachers})
 
 
 @login_required(login_url='adminlogin')
@@ -276,14 +276,14 @@ def update_teacher_view(request,pk):
             f2.status=True
             f2.save()
             return redirect('admin-view-teacher')
-    return render(request,'school/admin_update_teacher.html',context=mydict)
+    return render(request,'school/admin_atualizar_professor.html',context=mydict)
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_view_teacher_salary_view(request):
+def admin_view_professor_salario_view(request):
     teachers=models.TeacherExtra.objects.all()
-    return render(request,'school/admin_view_teacher_salary.html',{'teachers':teachers})
+    return render(request,'school/admin_view_professor_salario.html',{'teachers':teachers})
 
 
 
@@ -294,13 +294,13 @@ def admin_view_teacher_salary_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_student_view(request):
-    return render(request,'school/admin_student.html')
+def admin_estudante_view(request):
+    return render(request,'school/admin_estudante.html')
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_add_student_view(request):
+def admin_add_estudante_view(request):
     form1=forms.StudentUserForm()
     form2=forms.StudentExtraForm()
     mydict={'form1':form1,'form2':form2}
@@ -323,14 +323,14 @@ def admin_add_student_view(request):
         else:
             print("form is invalid")
         return HttpResponseRedirect('admin-student')
-    return render(request,'school/admin_add_student.html',context=mydict)
+    return render(request,'school/admin_add_estudante.html',context=mydict)
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_view_student_view(request):
+def admin_view_estudante_view(request):
     students=models.StudentExtra.objects.all().filter(status=True)
-    return render(request,'school/admin_view_student.html',{'students':students})
+    return render(request,'school/admin_view_estudante.html',{'students':students})
 
 
 @login_required(login_url='adminlogin')
@@ -373,15 +373,15 @@ def update_student_view(request,pk):
             f2.status=True
             f2.save()
             return redirect('admin-view-student')
-    return render(request,'school/admin_update_student.html',context=mydict)
+    return render(request,'school/admin_atualizar_estudante.html',context=mydict)
 
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_approve_student_view(request):
+def admin_aprovar_estudante_view(request):
     students=models.StudentExtra.objects.all().filter(status=False)
-    return render(request,'school/admin_approve_student.html',{'students':students})
+    return render(request,'school/admin_aprovar_estudante.html',{'students':students})
 
 
 @login_required(login_url='adminlogin')
@@ -395,9 +395,9 @@ def approve_student_view(request,pk):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_view_student_fee_view(request):
+def admin_view_estudante_mensalidade_view(request):
     students=models.StudentExtra.objects.all()
-    return render(request,'school/admin_view_student_fee.html',{'students':students})
+    return render(request,'school/admin_view_estudante_mensalidade.html',{'students':students})
 
 
 
@@ -407,13 +407,13 @@ def admin_view_student_fee_view(request):
 #attendance related viewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_attendance_view(request):
-    return render(request,'school/admin_attendance.html')
+def admin_chamada_view(request):
+    return render(request,'school/admin_chamada.html')
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_take_attendance_view(request,cl):
+def admin_fazer_chamada_view(request,cl):
     students=models.StudentExtra.objects.all().filter(cl=cl)
     print(students)
     aform=forms.ChamadaForm()
@@ -432,7 +432,7 @@ def admin_take_attendance_view(request,cl):
             return redirect('admin-attendance')
         else:
             print('form invalid')
-    return render(request,'school/admin_take_attendance.html',{'students':students,'aform':aform})
+    return render(request,'school/admin_fazer_chamada.html',{'students':students,'aform':aform})
 
 
 
@@ -447,10 +447,10 @@ def admin_view_attendance_view(request,cl):
             Chamadadata=models.Chamada.objects.all().filter(date=date,cl=cl)
             studentdata=models.StudentExtra.objects.all().filter(cl=cl)
             mylist=zip(Chamadadata,studentdata)
-            return render(request,'school/admin_view_attendance_page.html',{'cl':cl,'mylist':mylist,'date':date})
+            return render(request,'school/admin_view_chamada_pagina.html',{'cl':cl,'mylist':mylist,'date':date})
         else:
             print('form invalid')
-    return render(request,'school/admin_view_attendance_ask_date.html',{'cl':cl,'form':form})
+    return render(request,'school/admin_view_chamada_data.html',{'cl':cl,'form':form})
 
 
 
@@ -482,7 +482,7 @@ def admin_view_mensalidade_detalhes(request,cl):
 #notice related viewsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def admin_notice_view(request):
+def admin_noticia_view(request):
     form=forms.NoticeForm()
     if request.method=='POST':
         form=forms.NoticeForm(request.POST)
@@ -491,7 +491,7 @@ def admin_notice_view(request):
             form.by=request.user.first_name
             form.save()
             return redirect('admin-dashboard')
-    return render(request,'school/admin_notice.html',{'form':form})
+    return render(request,'school/admin_noticia.html',{'form':form})
 
 
 
@@ -501,7 +501,7 @@ def admin_notice_view(request):
 
 
 #for TEACHER  LOGIN    SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-@login_required(login_url='teacherlogin')
+@login_required(login_url='professorlogin')
 @user_passes_test(is_teacher)
 def teacher_dashboard_view(request):
     teacherdata=models.TeacherExtra.objects.all().filter(status=True,user_id=request.user.id)
@@ -512,17 +512,17 @@ def teacher_dashboard_view(request):
         'date':teacherdata[0].dt_contrato,
         'notice':notice
     }
-    return render(request,'school/teacher_dashboard.html',context=mydict)
+    return render(request,'school/professor_dashboard.html',context=mydict)
 
 
 
-@login_required(login_url='teacherlogin')
+@login_required(login_url='professorlogin')
 @user_passes_test(is_teacher)
 def teacher_attendance_view(request):
-    return render(request,'school/teacher_attendance.html')
+    return render(request,'school/professor_chamada.html')
 
 
-@login_required(login_url='teacherlogin')
+@login_required(login_url='professorlogin')
 @user_passes_test(is_teacher)
 def teacher_take_attendance_view(request,cl):
     students=models.StudentExtra.objects.all().filter(cl=cl)
@@ -539,14 +539,14 @@ def teacher_take_attendance_view(request,cl):
                 ChamadaModel.present_status=Chamadas[i]
                 ChamadaModel.roll=students[i].roll
                 ChamadaModel.save()
-            return redirect('teacher-attendance')
+            return redirect('professor-chamada')
         else:
             print('form invalid')
-    return render(request,'school/teacher_take_attendance.html',{'students':students,'aform':aform})
+    return render(request,'school/professor-fazer-chamada.html',{'students':students,'aform':aform})
 
 
 
-@login_required(login_url='teacherlogin')
+@login_required(login_url='professorlogin')
 @user_passes_test(is_teacher)
 def teacher_view_attendance_view(request,cl):
     form=forms.AskDateForm()
@@ -557,14 +557,14 @@ def teacher_view_attendance_view(request,cl):
             Chamadadata=models.Chamada.objects.all().filter(date=date,cl=cl)
             studentdata=models.StudentExtra.objects.all().filter(cl=cl)
             mylist=zip(Chamadadata,studentdata)
-            return render(request,'school/teacher_view_attendance_page.html',{'cl':cl,'mylist':mylist,'date':date})
+            return render(request,'school/professor_ver_chamada.html',{'cl':cl,'mylist':mylist,'date':date})
         else:
             print('form invalid')
-    return render(request,'school/teacher_view_attendance_ask_date.html',{'cl':cl,'form':form})
+    return render(request,'school/professor_ver_chamada_data.html',{'cl':cl,'form':form})
 
 
 
-@login_required(login_url='teacherlogin')
+@login_required(login_url='professorlogin')
 @user_passes_test(is_teacher)
 def teacher_notice_view(request):
     form=forms.NoticeForm()
@@ -574,10 +574,10 @@ def teacher_notice_view(request):
             form=form.save(commit=False)
             form.by=request.user.first_name
             form.save()
-            return redirect('teacher-dashboard')
+            return redirect('professor-dashboard')
         else:
             print('form invalid')
-    return render(request,'school/teacher_notice.html',{'form':form})
+    return render(request,'school/professor_aviso.html',{'form':form})
 
 
 
@@ -586,7 +586,7 @@ def teacher_notice_view(request):
 
 
 #FOR STUDENT AFTER THEIR Loginnnnnnnnnnnnnnnnnnnnn
-@login_required(login_url='studentlogin')
+@login_required(login_url='estudantelogin')
 @user_passes_test(is_student)
 def student_dashboard_view(request):
     studentdata=models.StudentExtra.objects.all().filter(status=True,user_id=request.user.id)
@@ -597,11 +597,11 @@ def student_dashboard_view(request):
         'fee':studentdata[0].fee,
         'notice':notice
     }
-    return render(request,'school/student_dashboard.html',context=mydict)
+    return render(request,'school/estudante_dashboard.html',context=mydict)
 
 
 
-@login_required(login_url='studentlogin')
+@login_required(login_url='estudantelogin')
 @user_passes_test(is_student)
 def student_attendance_view(request):
     form=forms.AskDateForm()
@@ -612,10 +612,10 @@ def student_attendance_view(request):
             studentdata=models.StudentExtra.objects.all().filter(user_id=request.user.id,status=True)
             Chamadadata=models.Chamada.objects.all().filter(date=date,cl=studentdata[0].cl)
             mylist=zip(Chamadadata,studentdata)
-            return render(request,'school/student_view_attendance_page.html',{'mylist':mylist,'date':date})
+            return render(request,'school/estudante_ver_chamada.html',{'mylist':mylist,'date':date})
         else:
             print('form invalid')
-    return render(request,'school/student_view_attendance_ask_date.html',{'form':form})
+    return render(request,'school/estudante_ver_chamada_data.html',{'form':form})
 
 
 

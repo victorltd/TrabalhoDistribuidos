@@ -1,13 +1,12 @@
 <!DOCTYPE html>
+
 {% load widget_tweaks %}
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SisEDist - Login</title>
-
-
+  <title>Cadastro - SisEDist</title>
   <style type="text/css">
     body {
       color: #aa082e;
@@ -22,7 +21,7 @@
     .note {
       text-align: center;
       height: 80px;
-       background: -webkit-linear-gradient(left, #343a40, #607d8b);
+      background: -webkit-linear-gradient(left, #343a40, #607d8b);
       color: #fff;
       font-weight: bold;
       line-height: 80px;
@@ -49,57 +48,74 @@
     }
   </style>
 
-
-
-
-
-
 </head>
+
 
 <body>
   {% include "school/navbar.html" %}
   <br>
   <br>
-  <br><br>
+  <br>
+  <br>
 
-  <!--- login pra professor  ---------->
+
+
   <form method="post">
     {% csrf_token %}
     <div class="container register-form">
       <div class="form">
         <div class="note">
-          <p>Login - Professor</p>
+          <p>Novo cadastro de estudante</p>
         </div>
 
         <div class="form-content">
           <div class="row">
             <div class="col-md-6">
-
               <div class="form-group">
-                {% render_field form.username class="form-control" placeholder="first_name de usuário" %}
+                {% render_field form1.first_name class="form-control" placeholder="first_name" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.username class="form-control" placeholder="first_name de usuário" %}
+              </div>
+              <div class="form-group">
+                {% render_field form2.cl class="form-control" placeholder="Turma" %}
+              </div>
+              <div class="form-group">
+                {% render_field form2.mobile class="form-control" placeholder="mobile" %}
               </div>
 
             </div>
             <div class="col-md-6">
-
               <div class="form-group">
-                {% render_field form.password class="form-control" placeholder="Senha" %}
+                {% render_field form1.last_name class="form-control" placeholder="Sobrefirst_name" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.password class="form-control" type="password" placeholder="Senha" %}
+              </div>
+              <div class="form-group">
+                {% render_field form2.roll class="form-control" placeholder="Roll" %}
+              </div>
+              <div class="form-group">
+                {% render_field form2.fee class="form-control" placeholder="fee" %}
               </div>
 
             </div>
           </div>
-          <button type="submit" class="btnSubmit">Login</button>
-          <div class="text-center">Não tem cadastro? <a href="professorcadastro">Criar conta</a></div>
+          <button type="submit" class="btnSubmit">Enviar cadastro</button>
+          <div class="text-center">Já tem uma conta? <a href="estudantelogin">Logar</a></div>
         </div>
       </div>
     </div>
 
   </form>
 
-  <br><br><br>
-  <!--
-written By : sumit kumar
--->
+
+
+
+
+
+
+
   {% include "school/footer.html" %}
 </body>
 
