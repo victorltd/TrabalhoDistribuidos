@@ -1,8 +1,4 @@
-"""
-by sumit kumar
-written by fb.com/sumit.luv
 
-"""
 
 #alteracao lustosa
 from django.contrib import admin
@@ -34,31 +30,31 @@ urlpatterns = [
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
 
 
-    path('admin-teacher', views.admin_professor_view,name='admin-teacher'),
-    path('admin-add-teacher', views.admin_add_professor_view,name='admin-add-teacher'),
-    path('admin-view-teacher', views.admin_view_professor_view,name='admin-view-teacher'),
-    path('admin-approve-teacher', views.admin_aprovar_professor_view,name='admin-approve-teacher'),
-    path('approve-teacher/<int:pk>', views.approve_teacher_view,name='approve-teacher'),
-    path('delete-teacher/<int:pk>', views.delete_teacher_view,name='delete-teacher'),
-    path('delete-teacher-from-school/<int:pk>', views.delete_teacher_from_school_view,name='delete-teacher-from-school'),
-    path('update-teacher/<int:pk>', views.update_teacher_view,name='update-teacher'),
-    path('admin-view-teacher-salary', views.admin_view_professor_salario_view,name='admin-view-teacher-salary'),
+    path('admin-professor', views.admin_professor_view,name='admin-professor'),
+    path('admin-add-professor', views.admin_add_professor_view,name='admin-add-professor'),
+    path('admin-ver-professor', views.admin_view_professor_view,name='admin-ver-professor'),
+    path('admin-aprovar-professor', views.admin_aprovar_professor_view,name='admin-aprovar-professor'),
+    path('aprovar-professor/<int:pk>', views.approve_teacher_view,name='aprovar-professor'),
+    path('apagar-professor/<int:pk>', views.delete_teacher_view,name='apagar-professor'),
+    path('apagar-professor-escola/<int:pk>', views.delete_teacher_from_school_view,name='apagar-professor-escola'),
+    path('atualizar-professor/<int:pk>', views.update_teacher_view,name='atualizar-professor'),
+    path('admin-ver-salarios', views.admin_view_professor_salario_view,name='admin-ver-salarios'),
 
 
-    path('admin-student', views.admin_estudante_view,name='admin-student'),
-    path('admin-add-student', views.admin_add_estudante_view,name='admin-add-student'),
-    path('admin-view-student', views.admin_view_estudante_view,name='admin-view-student'),
-    path('delete-student-from-school/<int:pk>', views.delete_student_from_school_view,name='delete-student-from-school'),
-    path('delete-student/<int:pk>', views.delete_student_view,name='delete-student'),
-    path('update-student/<int:pk>', views.update_student_view,name='update-student'),
-    path('admin-approve-student', views.admin_aprovar_estudante_view,name='admin-approve-student'),
-    path('approve-student/<int:pk>', views.approve_student_view,name='approve-student'),
-    path('admin-view-student-fee', views.admin_view_estudante_mensalidade_view,name='admin-view-student-fee'),
+    path('admin-estudante', views.admin_estudante_view,name='admin-estudante'),
+    path('admin-add-estudante', views.admin_add_estudante_view,name='admin-add-estudante'),
+    path('admin-ver-estudante', views.admin_view_estudante_view,name='admin-ver-estudante'),
+    path('apagar-estudante-escola/<int:pk>', views.delete_student_from_school_view,name='apagar-estudante-escola'),
+    path('apagar-estudante/<int:pk>', views.delete_student_view,name='apagar-estudante'),
+    path('atualizar-estudante/<int:pk>', views.update_student_view,name='atualizar-estudante'),
+    path('admin-aprovar-estudante', views.admin_aprovar_estudante_view,name='admin-aprovar-estudante'),
+    path('aprovar-estudante/<int:pk>', views.approve_student_view,name='aprovar-estudante'),
+    path('admin-ver-mensalidades', views.admin_view_estudante_mensalidade_view,name='admin-ver-mensalidades'),
 
 
-    path('admin-attendance', views.admin_chamada_view,name='admin-attendance'),
-    path('admin-take-attendance/<str:cl>', views.admin_fazer_chamada_view,name='admin-take-attendance'),
-    path('admin-view-attendance/<str:cl>', views.admin_view_attendance_view,name='admin-view-attendance'),
+    path('admin-chamada', views.admin_chamada_view,name='admin-chamada'),
+    path('admin-fazer-chamada/<str:cl>', views.admin_fazer_chamada_view,name='admin-fazer-chamada'),
+    path('admin-ver-chamada/<str:cl>', views.admin_view_attendance_view,name='admin-ver-chamada'),
 
 
     path('admin-mensalidade', views.admin_mensalidade_view,name='admin-mensalidade'),
@@ -81,5 +77,5 @@ urlpatterns = [
 
 
     path('sobre', views.sobre_view),
-    path('contactus', views.contactus_view),
+    path('contato', views.contactus_view),
 ]

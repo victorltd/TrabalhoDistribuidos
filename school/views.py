@@ -207,7 +207,7 @@ def admin_add_professor_view(request):
             my_teacher_group = Group.objects.get_or_create(name='TEACHER')
             my_teacher_group[0].user_set.add(user)
 
-        return HttpResponseRedirect('admin-teacher')
+        return HttpResponseRedirect('admin-professor')
     return render(request,'school/admin_add_professor.html',context=mydict)
 
 
@@ -231,7 +231,7 @@ def approve_teacher_view(request,pk):
     teacher=models.TeacherExtra.objects.get(id=pk)
     teacher.status=True
     teacher.save()
-    return redirect(reverse('admin-approve-teacher'))
+    return redirect(reverse('admin-aprovar-professor'))
 
 
 @login_required(login_url='adminlogin')
@@ -241,7 +241,7 @@ def delete_teacher_view(request,pk):
     user=models.User.objects.get(id=teacher.user_id)
     user.delete()
     teacher.delete()
-    return redirect('admin-approve-teacher')
+    return redirect('admin-aprovar-professor')
 
 
 @login_required(login_url='adminlogin')
@@ -251,7 +251,7 @@ def delete_teacher_from_school_view(request,pk):
     user=models.User.objects.get(id=teacher.user_id)
     user.delete()
     teacher.delete()
-    return redirect('admin-view-teacher')
+    return redirect('admin-ver-professor')
 
 
 @login_required(login_url='adminlogin')
@@ -275,7 +275,7 @@ def update_teacher_view(request,pk):
             f2=form2.save(commit=False)
             f2.status=True
             f2.save()
-            return redirect('admin-view-teacher')
+            return redirect('admin-ver-professor')
     return render(request,'school/admin_atualizar_professor.html',context=mydict)
 
 
@@ -322,7 +322,7 @@ def admin_add_estudante_view(request):
             my_student_group[0].user_set.add(user)
         else:
             print("form is invalid")
-        return HttpResponseRedirect('admin-student')
+        return HttpResponseRedirect('admin-estudante')
     return render(request,'school/admin_add_estudante.html',context=mydict)
 
 
@@ -340,7 +340,7 @@ def delete_student_from_school_view(request,pk):
     user=models.User.objects.get(id=student.user_id)
     user.delete()
     student.delete()
-    return redirect('admin-view-student')
+    return redirect('admin-ver-estudante')
 
 
 @login_required(login_url='adminlogin')
@@ -350,7 +350,7 @@ def delete_student_view(request,pk):
     user=models.User.objects.get(id=student.user_id)
     user.delete()
     student.delete()
-    return redirect('admin-approve-student')
+    return redirect('admin-aprovar-estudante')
 
 
 @login_required(login_url='adminlogin')
@@ -372,7 +372,7 @@ def update_student_view(request,pk):
             f2=form2.save(commit=False)
             f2.status=True
             f2.save()
-            return redirect('admin-view-student')
+            return redirect('admin-ver-estudante')
     return render(request,'school/admin_atualizar_estudante.html',context=mydict)
 
 
@@ -390,7 +390,7 @@ def approve_student_view(request,pk):
     students=models.StudentExtra.objects.get(id=pk)
     students.status=True
     students.save()
-    return redirect(reverse('admin-approve-student'))
+    return redirect(reverse('admin-aprovar-estudante'))
 
 
 @login_required(login_url='adminlogin')
@@ -429,7 +429,7 @@ def admin_fazer_chamada_view(request,cl):
                 ChamadaModel.date=date
                 ChamadaModel.present_status=Chamadas[i]
                 ChamadaModel.save()
-            return redirect('admin-attendance')
+            return redirect('admin-chamada')
         else:
             print('form invalid')
     return render(request,'school/admin_fazer_chamada.html',{'students':students,'aform':aform})
@@ -629,6 +629,7 @@ def student_attendance_view(request):
 def sobre_view(request):
     return render(request,'school/sobre.html')
 
+
 def contactus_view(request):
     sub = forms.ContactusForm()
     if request.method == 'POST':
@@ -636,7 +637,7 @@ def contactus_view(request):
         if sub.is_valid():
             email = sub.cleaned_data['Email']
             name=sub.cleaned_data['Name']
-            message = sub.cleaned_data['Message']
-            send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
-            return render(request, 'school/contactussuccess.html')
-    return render(request, 'school/contactus.html', {'form':sub})
+            message = 'Nome:' + name + '\nEmail: ' + email+ '\nMensagem:' +  sub.cleaned_data['Message']
+            send_mail('SisEDist - Contato',message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
+            return render(request, 'school/contatosucesso.html')
+    return render(request, 'school/contato.html', {'form':sub})
