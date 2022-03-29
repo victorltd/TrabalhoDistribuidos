@@ -641,3 +641,32 @@ def contactus_view(request):
             send_mail('SisEDist - Contato',message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
             return render(request, 'school/contatosucesso.html')
     return render(request, 'school/contato.html', {'form':sub})
+
+def estudante_senha(request):
+    sub = forms.SenhaForm()
+    if request.method == 'POST':
+        sub = forms.SenhaForm(request.POST)
+        if sub.is_valid():
+            email = sub.cleaned_data['Email']
+            nome=sub.cleaned_data['Nome']
+            username=sub.cleaned_data['Nome_user']
+
+            message = 'Nome:' + nome + '\nEmail: ' + email+ '\nUsername:' + username +  '\nObservação: ' + sub.cleaned_data['Observacao']
+            send_mail('SisEDist - Perdi a senha(Aluno)',message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
+            return render(request, 'school/estudantesenhasucesso.html')
+    return render(request, 'school/estudantesenha.html', {'form':sub})    
+
+def professor_senha(request):
+    sub = forms.SenhaForm()
+    if request.method == 'POST':
+        sub = forms.SenhaForm(request.POST)
+        if sub.is_valid():
+            email = sub.cleaned_data['Email']
+            nome=sub.cleaned_data['Nome']
+            username=sub.cleaned_data['Nome_user']
+
+            message = 'Nome:' + nome + '\nEmail: ' + email+ '\nUsername:' + username +  '\nObservação: ' + sub.cleaned_data['Observacao']
+            send_mail('SisEDist - Perdi a senha(Professor)',message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
+            return render(request, 'school/professorsenhasucesso.html')
+    return render(request, 'school/professorsenha.html', {'form':sub})   
+#ss

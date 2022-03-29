@@ -78,4 +78,7 @@ urlpatterns = [
 
     path('sobre', views.sobre_view),
     path('contato', views.contactus_view),
+    path('estudantesenha', views.estudante_senha),
+    path('professorsenha', views.professor_senha),
+
 ]
